@@ -1,0 +1,10 @@
+{
+  "username": "str2ing",
+  "email": "us2er@ex2ample.com",
+  "date_birth": "2023-01-23",
+  "email_alt": "user@example.com",
+  "tel_num": "string",
+  "tel_num_emergency": "string",
+  "company_name": "string",
+  "is_employee": true
+}
