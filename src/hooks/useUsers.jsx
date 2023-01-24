@@ -1,13 +1,13 @@
 import Api from "../services/Api";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 async function fetchUsers() {
-  const { data } = await Api.get("/user/");
+  const { data } = await Api.get("/users/");
   return data;
 }
-export const createUser = (user) => Api.post("/user/", user);
-export const updateUser = (user) => Api.put(`/user/${user.uuid}/`, user);
-export const deleteUser = (user) => Api.delete(`/user/${user.uuid}/`);
-export const getUser = (uuid) => Api.get(`/user/${uuid}/`);
+export const createUser = (user) => Api.post("/users/", user);
+export const updateUser = (user) => Api.put(`/users/${user.uuid}/`, user);
+export const deleteUser = (user) => Api.delete(`/users/${user.uuid}/`);
+export const getUser = (uuid) => Api.get(`/users/${uuid}/`);
 
 export function useCreateUser() {
   const queryClient = useQueryClient();

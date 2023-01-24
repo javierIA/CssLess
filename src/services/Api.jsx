@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const Api = axios.create({
-  baseURL: "http://192.168.1.8:8000/api/v1",
+  baseURL: "http://ec2-54-234-17-134.compute-1.amazonaws.com:8000/api/v1",
 });
 
 

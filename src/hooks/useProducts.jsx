@@ -1,13 +1,13 @@
 import Api from "../services/Api";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 async function fetchProducts() {
-  const { data } = await Api.get("/product/");
+  const { data } = await Api.get("/products/");
   return data;
 }
-export const createProduct = (Product) => Api.post("/product/", Product);
-export const updateProduct = (Product) => Api.put(`/product/${Product.uuid}/`, Product);
-export const deleteProduct = (Product) => Api.delete(`/product/${Product.uuid}/`);
-export const getProduct = (uuid) => Api.get(`product/${uuid}/`);
+export const createProduct = (Product) => Api.post("/products/", Product);
+export const updateProduct = (Product) => Api.put(`/products/${Product.uuid}/`, Product);
+export const deleteProduct = (Product) => Api.delete(`/products/${Product.uuid}/`);
+export const getProduct = (uuid) => Api.get(`products/${uuid}/`);
 
 export function useCreateProduct() {
   const queryClient = useQueryClient();
