@@ -6,12 +6,12 @@ function DropRejection_Causes() {
   
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
+  console.log(data);
   return (
-   <select name="Rejection_Causes" id="rejection_causes">
+   <select  id="rejection_causes">
    {data.results.map((rejection_causes) => (
-   <option value={rejection_causes.name} ></option>
-
-   ))}
+   <option key={rejection_causes.uuid} value={rejection_causes.name}>{rejection_causes.name}</option>
+))}
    <option value="Ninguno" multiple>Sin caso de rechazo</option>
    </select>
      );

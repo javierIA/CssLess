@@ -11,7 +11,7 @@ import { ReactQueryDevtools } from 'react-query-devtools'
 import ProductAdmin from './components/pages/ProductsAdmin';
 import ProductForm from './components/pages/forms/ProductForm';
 import TicketAdmin from "./components/pages/TicketsAdmin";
-import DropRejection_Causes from './components/common/rejection_causes';
+import Test from './components/pages/Test';
 function App() {
   const queryClient = new QueryClient();
   
@@ -23,7 +23,7 @@ function App() {
       <NavBar />
 
       <Routes> 
-        <Route path="/test" element={<DropRejection_Causes />} />
+        <Route path="/test" element={<Test />} />
         <Route path="/tickets" element={<TicketAdmin />} />
         <Route path="/products/form/:uuid" element={<ProductForm />} />
         <Route path="/products/form" element={<ProductForm />} />
