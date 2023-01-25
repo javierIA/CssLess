@@ -25,8 +25,23 @@ export default function NavBar() {
             Products
           </Link >
         </li>
+        <li>
+          <Link
 
-       
+            to="/tickets" 
+            className={({ isActive }) => (isActive ? "active" : "")}>
+            Tickets
+          </Link >
+        </li>
+
+           <li>
+          <Link
+
+            to="/test" 
+            className={({ isActive }) => (isActive ? "active" : "")}>
+            Test
+          </Link >
+        </li>
       </ul>
     </div>
   );

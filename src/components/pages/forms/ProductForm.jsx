@@ -9,7 +9,6 @@ const ProductForm = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const user = Object.fromEntries(formData);
-    console.log(user); 
 
     CreateProduct(user);
   

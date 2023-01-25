@@ -1,10 +1,10 @@
-import { useFetchUsers } from "../../hooks/useUsers";
+import { useFetchUsers ,useDeleteUser } from "../../hooks/useUsers";
 import { Link } from "react-router-dom";
-import { useDeleteUser  } from "../../hooks/useUsers";
 
 function UserAdmin() {
   const { data, isLoading, error } = useFetchUsers();
-  
+  const {mutate:DeleteUser}= useDeleteUser();
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
   console.log(data);
@@ -33,7 +33,7 @@ function UserAdmin() {
             <td>{user.date_birth}</td>
             <td>{user.email_alt}</td>
             <td>
-              <button onClick={() => useDeleteUser.mutations(user.uuid)}>Delete</button>
+              <button onClick={() => DeleteUser(user)}>Delete</button>
             </td>
           </tr>
         ))}

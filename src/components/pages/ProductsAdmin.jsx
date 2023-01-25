@@ -25,7 +25,7 @@ function ProductAdmin() {
    <tr key={product.uuid} >
    <td>{product.name}</td>
    <td>{product.part_number}</td>
-   <td>{product.rejection_causes}</td>
+
    <td>{product.uuid}</td>
    </tr>
    ))}
