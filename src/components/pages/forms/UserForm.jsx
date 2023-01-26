@@ -3,7 +3,7 @@ import { useCreateUser } from "../../../hooks/useUsers";
 
 
 const UserForm = () => {
-  const { mutate: CreateUser } = useCreateUser();
+  const  {mutate: CreateUser, status, error }= useCreateUser();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,8 +17,10 @@ const UserForm = () => {
 
   return (
     <form  onSubmit={handleSubmit} >
+    {status === "loading" && <p>Creando ...</p>}
+      {status === "error" && <p>Error: {JSON.stringify(error.response.data  )}</p>}
   <div>
-    <label htmlFor="username">Username</label>
+    <label htmlFor="username">Usaurio</label>
     <input type="text" name="username" id="username" required/>
   </div>
   <div>
@@ -26,19 +28,19 @@ const UserForm = () => {
     <input type="email" name="email" id="email" required/>
   </div>
   <div>
-    <label htmlFor="date_birth">Birth Date</label>
+    <label htmlFor="date_birth">Fecha de naciemiento</label>
     <input type="date" name="date_birth" id="date_birth" required/>
   </div>
   <div>
-    <label htmlFor="email_alt">Alt Email</label>
+    <label htmlFor="email_alt">Email altenativo</label>
     <input type="email" name="email_alt" id="email_alt" required/>
   </div>
   <div>
-    <label htmlFor="tel_num">Telephone Number</label>
+    <label htmlFor="tel_num">Numero de Telefono</label>
     <input type="tel" name="tel_num" id="tel_num" required/>
   </div>
   <div>
-    <label htmlFor="tel_num_emergency">Emergency Telephone Number</label>
+    <label htmlFor="tel_num_emergency">Telefono de Emergencia</label>
     <input type="tel" name="tel_num_emergency" id="tel_num_emergency" required/>
   </div>
   <div>

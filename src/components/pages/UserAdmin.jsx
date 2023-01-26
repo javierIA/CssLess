@@ -34,7 +34,7 @@ function UserAdmin() {
             <td>{user.email_alt}</td>
             <td>
               <button onClick={() => DeleteUser(user)}>Delete</button>
-            </td>
+            </td> 
           </tr>
         ))}
       </tbody>

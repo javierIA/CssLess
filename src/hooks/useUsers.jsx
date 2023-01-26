@@ -11,8 +11,8 @@ export const getUser = (uuid) => Api.get(`/users/${uuid}/`);
 
 export function useCreateUser() {
   const queryClient = useQueryClient();
-  return useMutation({ mutationFn: createUser, onSuccess: () => queryClient.invalidateQueries("users") ,
-onError: (error) => { console.log(error); } });
+  return useMutation({ mutationFn: createUser, onSuccess: () => queryClient.invalidateQueries("users") 
+})
 }
 export function useDeleteUser(){
   const queryClient = useQueryClient();
