@@ -1,8 +1,9 @@
-import { useFetchProducts } from "../../hooks/useProducts";
+import { useFetchProducts, useDeleteProduct, deleteProduct } from "../../hooks/useProducts";
 import { Link } from "react-router-dom";
 
 function ProductAdmin() {
   const { data, isLoading, error } = useFetchProducts();
+  const { mutate: DeleteProduct} = useDeleteProduct();
   
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
@@ -14,19 +15,21 @@ function ProductAdmin() {
    <table>
    <thead>
    <tr>
-   <th>Name</th>
-   <th>Part Number</th>
-   <th>Rejection Causes</th>
-   <th>Uuid</th>
+   <th>Nombre</th>
+   <th>Número de parte</th>
+   <th>Descripción</th>
    </tr>
    </thead>
    <tbody>
    {data.results.map((product) => (
    <tr key={product.uuid} >
+
    <td>{product.name}</td>
    <td>{product.part_number}</td>
-
-   <td>{product.uuid}</td>
+   <td>{product.description}</td>
+   <td>
+    <button onClick={() => DeleteProduct(product)}>Delete</button>
+   </td>
    </tr>
    ))}
    </tbody>

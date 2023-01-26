@@ -7,11 +7,12 @@ import UserAdmin from './components/pages/UserAdmin';
 import NavBar from './components/common/NavBar';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import UserForm from './components/pages/forms/UserForm';
-import { ReactQueryDevtools } from 'react-query-devtools'
 import ProductAdmin from './components/pages/ProductsAdmin';
 import ProductForm from './components/pages/forms/ProductForm';
 import TicketAdmin from "./components/pages/TicketsAdmin";
 import Test from './components/pages/Test';
+import RejectionCausesAdmin from './components/pages/RejectionCausesAdmin';
+import RejectionsForm from './components/pages/forms/RejectionsForm';
 function App() {
   const queryClient = new QueryClient();
   
@@ -32,9 +33,11 @@ function App() {
         <Route path="/admin" element={<UserAdmin />} />
         <Route path="/admin/form" element={<UserForm />} />
         <Route path="/" element={<Home />} />
+        <Route path="/rejections" element={<RejectionCausesAdmin/>} />
+        <Route path="/rejections/form" element={<RejectionsForm/>}/>
+
       </Routes>
     </QueryClientProvider>
-     <ReactQueryDevtools initialIsOpen={false} />
      </>
   );
 }

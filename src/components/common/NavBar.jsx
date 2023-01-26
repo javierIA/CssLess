@@ -33,7 +33,14 @@ export default function NavBar() {
             Tickets
           </Link >
         </li>
+        <li>
+          <Link
 
+            to="/rejections" 
+            className={({ isActive }) => (isActive ? "active" : "")}>
+            Razones de rechazo
+          </Link >
+        </li>
            <li>
           <Link
 
