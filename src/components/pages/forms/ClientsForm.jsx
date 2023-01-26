@@ -1,38 +1,38 @@
 import React from "react";
-import { useCreateProduct} from "../../../hooks/useProducts";
-import DropRejection_Causes from "../../common/DropRejection_Causes"
+import { useCreateClients } from "../../../hooks/UseClients";
 
-const ProductForm = () => {
- const { mutate: CreateProduct,status, error } = useCreateProduct();
 
+const ClientForm = () => {
+ const { mutate: CreateClients ,status, error} = useCreateClients();
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const products = Object.fromEntries(formData); 
-    console.log(products);
-    CreateProduct(products);
+    const client = Object.fromEntries(formData);
+
+    CreateClients(client);
+  
   };    
 
   return (
-    
     <form  onSubmit={handleSubmit} >
-  <div> 
-  {status === "loading" && <p>Creando ...</p>}
+        {status === "loading" && <p>Creando ...</p>}
       {status === "error" && <p>Error: {JSON.stringify(error.response.data  )}</p>}
+  <div> 
     <label htmlFor="name">Nombre</label>
     <input type="text" name="name" id="name" required/>
-  </div>
-  <div>
-    <label htmlFor="part_number">Número de parte</label>
-    <input type="text" name="part_number" id="part_number" required/>
   </div>
   <div>
     <label htmlFor="description">Descripción</label>
     <input type="text" name="description" id="description" required/>
   </div>
+  <div>
+    <label htmlFor="lacation">Ubicación</label>
+    <input type="text" name="lacation" id="lacation" required/>
+      </div>
   <button type="submit">Enviar</button>
 </form>
+
   );
 };
 
-export default ProductForm;
+export default ClientForm;

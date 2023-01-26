@@ -1,16 +1,15 @@
 import React from "react";
-import { useCreateProduct} from "../../../hooks/useProducts";
-import DropRejection_Causes from "../../common/DropRejection_Causes"
+import { useCreaterejection_causes} from "../../../hooks/useRejection_causes";
 
-const ProductForm = () => {
- const { mutate: CreateProduct,status, error } = useCreateProduct();
+const RejectionForm = () => {
+ const { mutate: CreateRejection,status, error } = useCreaterejection_causes();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const products = Object.fromEntries(formData); 
-    console.log(products);
-    CreateProduct(products);
+    const Rejection = Object.fromEntries(formData); 
+    console.log(Rejection);
+    CreateRejection(Rejection);
   };    
 
   return (
@@ -23,11 +22,7 @@ const ProductForm = () => {
     <input type="text" name="name" id="name" required/>
   </div>
   <div>
-    <label htmlFor="part_number">Número de parte</label>
-    <input type="text" name="part_number" id="part_number" required/>
-  </div>
-  <div>
-    <label htmlFor="description">Descripción</label>
+    <label htmlFor="description">Description</label>
     <input type="text" name="description" id="description" required/>
   </div>
   <button type="submit">Enviar</button>
@@ -35,4 +30,4 @@ const ProductForm = () => {
   );
 };
 
-export default ProductForm;
+export default RejectionForm;

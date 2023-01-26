@@ -2,12 +2,12 @@ import {Link, NavLink} from 'react-router-dom'
 export default function NavBar() {
   return (
     <div>
-      <ul>
+       <ul style={{display: 'flex', justifyContent: 'space-between',width:"100%"}}>
         <li>
           <NavLink
             to="/"  
             className={({ isActive }) => (isActive ? "active" : "")}>
-            Home
+            Inicio
           </NavLink >
       
         </li>
@@ -15,14 +15,14 @@ export default function NavBar() {
           <Link 
             to="/admin"
             className={({ isActive }) => (isActive ? "active" : "")}>
-            UserAdmin
+            Administrador
           </Link >
         </li>
         <li>
           <Link
-            to="/products"
+            to="/admin/products"
             className={({ isActive }) => (isActive ? "active" : "")}>
-            Products
+            Productos
           </Link >
         </li>
         <li>
@@ -48,8 +48,28 @@ export default function NavBar() {
             className={({ isActive }) => (isActive ? "active" : "")}>
             Test
           </Link >
+
+        </li>
+        <li>
+          <Link
+
+            to="/admin/clients" 
+            className={({ isActive }) => (isActive ? "active" : "")}>
+            Clientes
+          </Link >
+          
+        </li>
+        <li>
+          <Link
+
+            to="/admin/rejection_causes" 
+            className={({ isActive }) => (isActive ? "active" : "")}>
+            Rechazos
+          </Link >
+          
         </li>
       </ul>
+     
     </div>
   );
 }

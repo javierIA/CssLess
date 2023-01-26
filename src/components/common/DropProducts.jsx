@@ -1,21 +1,22 @@
 import { useFetchProducts } from "../../hooks/useProducts";
 import { Link } from "react-router-dom";
- 
+import Select from 'react-select'
 function DropProducts() {
   const { data, isLoading, error } = useFetchProducts();
   
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
   return (
-   <select name="DropProducts" id="DropProducts">
-   {data.results.map((products) => (
-   <option value={products.name} key={products.uuid} >
-   {products.name}
-   </option>
-
-   ))}
-   <option value="Ninguno" multiple>Sin</option>
-   </select>
+    <Select
+      options={data.results}
+      getOptionLabel={(option) => option.name}
+      getOptionValue={(option) => option.uuid}
+      name="product"
+      id="product"
+      isMulti
+      isSearchable
+      isClearable
+    />
      );
    }
    export default DropProducts;

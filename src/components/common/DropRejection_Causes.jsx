@@ -1,19 +1,32 @@
 import { useFetchrejection_causes } from "../../hooks/useRejection_causes";
-import { Link } from "react-router-dom";
- 
+
+import Select from 'react-select'
+
 function DropRejection_Causes() {
-  const { data, isLoading, error } = useFetchrejection_causes();
-  
+  const { data, isLoading, error } = useFetchrejection_causes();  
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-  console.log(data);
+ 
+  let options = [{name:"Ninguna",uuid:"Ninguna",description:"Ninguna"}]
+  options = options.concat(data.results)
+  
   return (
-   <select  id="rejection_causes">
-   {data.results.map((rejection_causes) => (
-   <option key={rejection_causes.uuid} value={rejection_causes.name}>{rejection_causes.name}</option>
-))}
-   <option value="Ninguno" multiple>Sin caso de rechazo</option>
-   </select>
-     );
-   }
+    
+    <Select 
+      options={options}
+      getOptionLabel={(option) => option.name}
+      getOptionValue={(option) => option.name}
+      name="description"
+      id="description"
+      isMulti
+      isSearchable
+      isClearable
+      ignoreCase={true}
+      ignoreAccents={true}
+      matchFrom="any"
+      stingify={options.name}
+      trim={true}
+      />
+  );
+  }
    export default DropRejection_Causes;
