@@ -1,9 +1,10 @@
-import { useFetchUsers ,useDeleteUser } from "../../hooks/useUsers";
+import { useFetchUsers ,useDeleteUser, useUpdateUser } from "../../hooks/useUsers";
 import { Link } from "react-router-dom";
 
 function UserAdmin() {
   const { data, isLoading, error } = useFetchUsers();
   const {mutate:DeleteUser}= useDeleteUser();
+  const {mutate: UpdateUser}= useUpdateUser();
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
@@ -11,7 +12,7 @@ function UserAdmin() {
   return (
     <div>
     <h1>User Admin</h1> 
-    <Link to="/admin/form">Create User</Link>
+    <Link to="/admin/form">Crear Usuario</Link>
     <table>
 
       <thead>
@@ -34,6 +35,9 @@ function UserAdmin() {
             <td>{user.email_alt}</td>
             <td>
               <button onClick={() => DeleteUser(user)}>Delete</button>
+              <Link to={`/admin/form/${user.uuid}`}>
+                <button>Actualizar</button>
+              </Link>
             </td> 
           </tr>
         ))}

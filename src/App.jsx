@@ -37,8 +37,9 @@ function App() {
         <Route path="/admin" element={<UserAdmin />} />
         <Route path="/admin/form" element={<UserForm />} />
         <Route path="/" element={<Home />} />
-        <Route path="/rejections" element={<RejectionCausesAdmin/>} />
-        <Route path="/rejections/form" element={<RejectionsForm/>}/>
+        <Route path="/rejections" element={<RejectionAdmin/>} />
+        <Route path="/rejections/form" element={<RejectionForm/>}/>
+        <Route path="/admin/form/:userId" component={<UpdateForm/>} />
 
       </Routes>
     </QueryClientProvider>
