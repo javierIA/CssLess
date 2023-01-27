@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
-import DropRejection_Causes from '../common/DropRejection_Causes'
-import DropProducts from '../common/DropProducts'
+
+import {DropClients,DropProducts,DropRejection_Causes} from '../common/DropDownData'
 function Test() {
    return (
      <>
-     <DropRejection_Causes />
-     <DropProducts />
+    
+      <DropClients />
      </>
    )
 

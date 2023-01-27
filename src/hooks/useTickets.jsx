@@ -29,5 +29,14 @@ onSuccess: () => {
 queryClient.invalidateQueries("tickets");
 }
 });
+
+}
+export function useCreateTicket() {
+const queryClient = useQueryClient();
+return useMutation(createTicket, {
+onSuccess: () => {
+queryClient.invalidateQueries("tickets");
+}
+});
 }
  

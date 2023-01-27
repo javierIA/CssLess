@@ -16,6 +16,7 @@ import ClientAdmin from "./components/pages/ClientsAdmin";
 import ClientForm from "./components/pages/forms/ClientsForm";
 import RejectionAdmin from "./components/pages/RejectionAdmin";
 import RejectionForm from "./components/pages/forms/RejectionForm";
+import TicketForm from "./components/pages/forms/TicketsFrom";
 function App() {
   const queryClient = new QueryClient();
   
@@ -32,6 +33,7 @@ function App() {
         <Route path="/admin/clients/form/" element={<ClientForm />} />
         <Route path="/admin/clients" element={<ClientAdmin />} />
         <Route path="/test" element={<Test />} />
+        <Route path="/tickets/form" element={<TicketForm />} />
         <Route path="/tickets" element={<TicketAdmin />} />
         <Route path="/admin/products/form" element={<ProductForm />} />
         <Route path="/admin/products" element={<ProductAdmin/>} />
