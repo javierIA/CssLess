@@ -1,12 +1,12 @@
 
-import {DropClients,DropProducts,DropRejection_Causes} from '../common/DropDownData'
+import React from 'react'
+import InspectedBoxForm from './forms/InspectedBoxForm';
 function Test() {
    return (
      <>
-    
-      <DropClients />
-     </>
-   )
+      <InspectedBoxForm/>
+       </>
+   );
 
    }
    export default Test;

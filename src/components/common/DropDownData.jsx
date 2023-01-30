@@ -93,7 +93,6 @@ export function DropClients() {
       console.trace(data.data.results)
       return (
         <select name="location" id="location">
-        <option value="Ninguno"  key="Ninguno" defaultValue="Ninguno">Ninguno</option>
         {Object.values(data.data.results).map((location) => (  
           <option key={location.uuid} value={location.uuid}>
             {location.name}
@@ -103,3 +102,4 @@ export function DropClients() {
 );
 }
 
+  

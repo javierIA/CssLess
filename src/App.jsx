@@ -17,6 +17,8 @@ import ClientForm from "./components/pages/forms/ClientsForm";
 import RejectionAdmin from "./components/pages/RejectionAdmin";
 import RejectionForm from "./components/pages/forms/RejectionForm";
 import TicketForm from "./components/pages/forms/TicketsFrom";
+import BoxAdmin from "./components/pages/BoxAdmin";
+import InspectedBoxForm from "./components/pages/forms/InspectedBoxForm";
 function App() {
   const queryClient = new QueryClient();
   
@@ -28,6 +30,8 @@ function App() {
       <NavBar />
 
       <Routes> 
+        <Route path="/tickets/boxes/:uuid/form/:uuid" element={<InspectedBoxForm />} />
+        <Route path="/tickets/boxes/:uuid" element={<BoxAdmin />} />
         <Route path="/admin/rejection_causes/form" element={<RejectionForm />} />
         <Route path="/admin/rejection_causes/" element={<RejectionAdmin />} />  
         <Route path="/admin/clients/form/" element={<ClientForm />} />
