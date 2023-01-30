@@ -6,7 +6,8 @@ import Home from './components/pages/Home';
 import UserAdmin from './components/pages/UserAdmin';
 import NavBar from './components/common/NavBar';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import UserForm from './components/pages/forms/UserForm';
+import  { UserForm,UpdateForm} from  './components/pages/forms/UserForm';
+
 import ProductAdmin from './components/pages/ProductsAdmin';
 import ProductForm from './components/pages/forms/ProductForm';
 import TicketAdmin from "./components/pages/TicketsAdmin";
@@ -26,6 +27,7 @@ function App() {
       <NavBar />
 
       <Routes> 
+        
         <Route path="/admin/rejection_causes/form" element={<RejectionForm />} />
         <Route path="/admin/rejection_causes/" element={<RejectionAdmin />} />  
         <Route path="/admin/clients/form/" element={<ClientForm />} />
@@ -39,7 +41,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/rejections" element={<RejectionAdmin/>} />
         <Route path="/rejections/form" element={<RejectionForm/>}/>
-        <Route path="/admin/form/:userId" component={<UpdateForm/>} />
+        <Route path="/admin/form/:uuid" element={<UpdateForm/>} />
 
       </Routes>
     </QueryClientProvider>

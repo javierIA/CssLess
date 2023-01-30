@@ -28,3 +28,7 @@ export function useFetchUsers() {
   return useQuery("users", fetchUsers,); 
   
 }
+export function useFetchUser(uuid) {
+  return useQuery(["users", uuid], () => getUser(uuid));
+
+}
