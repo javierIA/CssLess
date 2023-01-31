@@ -28,3 +28,7 @@ export function useFetchProducts() {
   return useQuery("Products", fetchProducts,); 
   
 }
+export function useFetchProduct(uuid) {
+  return useQuery(["Products", uuid], () => getProduct(uuid));
+
+}

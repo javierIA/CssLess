@@ -1,9 +1,9 @@
-import { useFetchrejection_causes } from "../../hooks/useRejection_causes";
+import { useFetchRejection_causes } from "../../hooks/useRejection_causes";
 
 import Select from 'react-select'
 
 function DropRejection_Causes() {
-  const { data, isLoading, error } = useFetchrejection_causes();  
+  const { data, isLoading, error } = useFetchRejection_causes();  
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
  

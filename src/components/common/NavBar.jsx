@@ -15,7 +15,7 @@ export default function NavBar() {
           <Link 
             to="/admin"
             className={({ isActive }) => (isActive ? "active" : "")}>
-            Administrador
+            Usuarios
           </Link >
         </li>
         <li>
@@ -34,14 +34,6 @@ export default function NavBar() {
           </Link >
         </li>
         <li>
-          <Link
-
-            to="/rejections" 
-            className={({ isActive }) => (isActive ? "active" : "")}>
-            Razones de rechazo
-          </Link >
-        </li>
-           <li>
           <Link
 
             to="/test" 

@@ -30,4 +30,17 @@ queryClient.invalidateQueries("tickets");
 }
 });
 }
+
+export function useFetchTicket(uuid) {
+    return useQuery(["tickets", uuid], () => getTicket(uuid));
+  
+  }
+export function useFetchTicketBox(uuid) {
+    return useQuery(["tickets", uuid], () => getTicketBox(uuid));
+}
+export function useFetchTicketProduct(uuid) {
+    return useQuery(["tickets", uuid], () => getTicketProduct(uuid));
+  }
+
+
  

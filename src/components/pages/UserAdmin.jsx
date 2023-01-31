@@ -12,15 +12,15 @@ function UserAdmin() {
   return (
     <div>
     <h1>User Admin</h1> 
-    <Link to="/admin/form">Crear Usuario</Link>
+    <Link to="/admin/users/form">Crear Usuario</Link>
     <table>
 
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Company</th>
+          <th>Nombre</th>
+          <th>Compañia</th>
           <th>Email</th>
-          <th>Birth Date</th>
+          <th>Fecha de nacimiento</th>
           <th>Alt Email</th>
           <th>Actions</th>
         </tr>
@@ -34,8 +34,8 @@ function UserAdmin() {
             <td>{user.date_birth}</td>
             <td>{user.email_alt}</td>
             <td>
-              <button onClick={() => DeleteUser(user)}>Delete</button>
-              <Link to={`/admin/form/${user.uuid}`}>
+              <button onClick={() => DeleteUser(user)}>Borrar usuario</button>
+              <Link to={`/admin/users/form/${user.uuid}`}>
                 <button>Actualizar</button>
               </Link>
             </td> 

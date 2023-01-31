@@ -7,19 +7,19 @@ async function fetchClients() {
 export const createClients = (Clients) => Api.post("/clients/", Clients);
 export const updateClients = (Clients) => Api.put(`/clients/${Clients.uuid}/`, Clients);
 export const deleteClients = (Clients) => Api.delete(`/clients/${Clients.uuid}/`);
-export const getClients = (uuid) => Api.get(`clients/${uuid}/`);
+export const getClient = (uuid) => Api.get(`clients/${uuid}/`);
 
-export function useCreateClients() {
+export function useCreateClient() {
   const queryClient = useQueryClient();
   return useMutation({ mutationFn: createClients, onSuccess: () => queryClient.invalidateQueries("Clients") ,
 onError: (error) => { console.log(error); } });
 }
-export function useDeleteClients(){
+export function useDeleteClient(){
   const queryClient = useQueryClient();
   return useMutation({ mutationFn: deleteClients, onSuccess: () => queryClient.invalidateQueries("Clients") ,
   onError: (error) => { console.log(error); } });
 }
-export function useUpdateClients() { 
+export function useUpdateClient() { 
   const queryClient = useQueryClient(); 
   return useMutation({ mutationFn: updateClients, onSuccess: () => queryClient.invalidateQueries("Clients") ,  
   onError: (error) => { console.log(error); } });
@@ -27,4 +27,8 @@ export function useUpdateClients() {
 export function useFetchClients() {
   return useQuery("Clients", fetchClients,); 
   
+}
+export function useFetchClient(uuid) {
+  return useQuery(["Clients", uuid], () => getClient(uuid));
+
 }

@@ -11,7 +11,7 @@ function ProductAdmin() {
   return (
    <div>
    <h1>Product Admin</h1>
-   <Link to="/admin/products/form">Create Product</Link>
+   <Link to="/admin/products/form">Crear nuevo producto</Link>
    <table>
    <thead>
    <tr>
@@ -29,7 +29,10 @@ function ProductAdmin() {
    <td>{product.description}</td>
     <td> 
 
-    <button onClick={() => DeleteProduct(product)}>Delete</button>
+    <button onClick={() => DeleteProduct(product)}>Borrar</button>
+    <Link to={`/admin/products/form/${product.uuid}`}>
+                <button>Actualizar</button>
+    </Link>
     </td>
    </tr>
    ))}

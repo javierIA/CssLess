@@ -1,9 +1,12 @@
 import React from "react";
-import { useCreateClients } from "../../../hooks/UseClients";
+import { useCreateClient, useFetchClient, useUpdateClient } from "../../../hooks/UseClients";
+import { Formik, Form, Field } from 'formik';
+import { useParams}  from "react-router-dom"
 
 
-const ClientForm = () => {
- const { mutate: CreateClients ,status, error} = useCreateClients();
+
+export const ClientForm = () => {
+ const { mutate: CreateClients ,status, error} = useCreateClient();
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -35,4 +38,42 @@ const ClientForm = () => {
   );
 };
 
-export default ClientForm;
+export  const UpdateClient = (props) => {
+
+  const {uuid} = useParams();
+  const  {mutate: Update, status, error: error2 }= useUpdateClient();
+
+  const { data, isLoading,isIdle, error } = useFetchClient(uuid);
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error!</div>;
+  if (isIdle) return <div>Idle...</div>;
+  const userData= data.data
+  const initialValues ={
+    name:  userData.name,
+    description: userData.description,
+    locations: userData.locations
+    
+
+  }
+  const handleSubmit = (values, { setSubmitting, resetForm}) => {
+    values.uuid = uuid;
+    setSubmitting(true);
+    Update(values);
+    setSubmitting(false);
+
+  }
+  return (
+    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      {({ isSubmitting, values, handleChange, handleBlur, handleSubmit, errors, touched}) => (
+        <Form >
+          <Field name="name" />
+          <Field name="description" />
+          
+
+          <button type="submit">Submit</button>
+        </Form>
+      )}
+    </Formik>
+  );
+}
+

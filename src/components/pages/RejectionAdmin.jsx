@@ -1,8 +1,8 @@
-import { useFetchrejection_causes,useDeleterejection_causes} from "../../hooks/useRejection_causes";
+import { useFetchRejection_causes,useDeleterejection_causes} from "../../hooks/useRejection_causes";
 import { Link } from "react-router-dom";
 
 function RejectionAdmin() {
-  const { data, isLoading, error } = useFetchrejection_causes();
+  const { data, isLoading, error } = useFetchRejection_causes();
   const { mutate: Deleterejection_causes } = useDeleterejection_causes();
 
   if (isLoading) return <div>Loading...</div>;
@@ -11,12 +11,12 @@ function RejectionAdmin() {
   return (
    <div>
    <h1>Rejection Admin</h1>
-   <Link to="/admin/rejection_causes/form">Create Rejection</Link>
+   <Link to="/admin/rejection_causes/form">Crear Razón de rechazo</Link>
    <table>
    <thead>
    <tr>
-   <th>Name</th>
-   <th>Description</th>
+   <th>Nombre</th>
+   <th>Descripción</th>
    <th>Actions</th>
    </tr>
    </thead>
@@ -27,7 +27,10 @@ function RejectionAdmin() {
    <td>{rejection_causes.description}</td>
     <td> 
 
-    <button onClick={() => Deleterejection_causes(rejection_causes)}>Delete</button>
+    <button onClick={() => Deleterejection_causes(rejection_causes)}>Borrar rechazo</button>
+    <Link to={`/admin/rejection_causes/form/${rejection_causes.uuid}`}>
+                <button>Actualizar</button>
+    </Link>
     </td>
    </tr>
    ))}

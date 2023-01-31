@@ -27,7 +27,10 @@ function RejectionCausesAdmin() {
    <td>{rejection.name}</td>
    <td>{rejection.description}</td>
    <td>
-    <button onClick={() => DeleteRejection(rejection)}>Delete</button>
+    <button onClick={() => DeleteRejection(rejection)}>Borrar</button>
+    <Link to={`/admin/rejection_causes/form/${rejection.uuid}`}>
+                <button>Actualizar</button>
+    </Link>
    </td>
    </tr>
    ))}
