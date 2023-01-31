@@ -1,13 +1,12 @@
-import { Link } from "react-router-dom";
-import DropRejection_Causes from '../common/DropRejection_Causes'
-import DropProducts from '../common/DropProducts'
+
+import React from 'react'
+import InspectedBoxForm from './forms/InspectedBoxForm';
 function Test() {
    return (
      <>
-     <DropRejection_Causes />
-     <DropProducts />
-     </>
-   )
+      <InspectedBoxForm/>
+       </>
+   );
 
    }
    export default Test;

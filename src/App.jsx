@@ -16,6 +16,9 @@ import ClientAdmin from "./components/pages/ClientsAdmin";
 import {ClientForm, UpdateClient} from "./components/pages/forms/ClientsForm";
 import RejectionAdmin from "./components/pages/RejectionAdmin";
 import {RejectionForm, UpdateRejection_cause} from "./components/pages/forms/RejectionForm";
+import TicketForm from "./components/pages/forms/TicketsFrom";
+import BoxAdmin from "./components/pages/BoxAdmin";
+import InspectedBoxForm from "./components/pages/forms/InspectedBoxForm";
 function App() {
   const queryClient = new QueryClient();
   
@@ -27,7 +30,8 @@ function App() {
       <NavBar />
 
       <Routes> 
-        
+        <Route path="/tickets/boxes/:uuid/form/:uuid" element={<InspectedBoxForm />} />
+        <Route path="/tickets/boxes/:uuid" element={<BoxAdmin />} />
         <Route path="/admin/rejection_causes/form" element={<RejectionForm />} />
         <Route path="/admin/rejection_causes/form/:uuid" element={<UpdateRejection_cause />} />
         <Route path="/admin/rejection_causes/" element={<RejectionAdmin />} />  
@@ -35,6 +39,7 @@ function App() {
         <Route path="/admin/clients/form/:uuid" element={<UpdateClient />} />
         <Route path="/admin/clients" element={<ClientAdmin />} />
         <Route path="/test" element={<Test />} />
+        <Route path="/tickets/form" element={<TicketForm />} />
         <Route path="/tickets" element={<TicketAdmin />} />
         <Route path="/admin/products/form" element={<ProductForm />} />
         <Route path="/admin/products/form/:uuid" element={<UpdateProduct/>}/>

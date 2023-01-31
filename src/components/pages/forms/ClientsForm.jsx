@@ -1,7 +1,8 @@
 import React from "react";
 import { useCreateClient, useFetchClient, useUpdateClient } from "../../../hooks/UseClients";
 import { Formik, Form, Field } from 'formik';
-import { useParams}  from "react-router-dom"
+import { useParams}  from "react-router-dom";
+import * as Yup from "yup";
 
 
 
@@ -17,24 +18,38 @@ export const ClientForm = () => {
   };    
 
   return (
-    <form  onSubmit={handleSubmit} >
-        {status === "loading" && <p>Creando ...</p>}
-      {status === "error" && <p>Error: {JSON.stringify(error.response.data  )}</p>}
-  <div> 
-    <label htmlFor="name">Nombre</label>
-    <input type="text" name="name" id="name" required/>
-  </div>
-  <div>
-    <label htmlFor="description">Descripción</label>
-    <input type="text" name="description" id="description" required/>
-  </div>
-  <div>
-    <label htmlFor="lacation">Ubicación</label>
-    <input type="text" name="lacation" id="lacation" required/>
-      </div>
-  <button type="submit">Enviar</button>
-</form>
-
+    <Formik
+      initialValues={{ name: "", description: "", location: "" }}
+      onSubmit={handleSubmit}
+      validationSchema={validationSchema}
+    > 
+      {({ isSubmitting }) => (
+        <Form>
+          {status === "loading" && <p>Creando ...</p>}
+          {status === "error" && (
+            <p>Error: {JSON.stringify(error.response.data)}</p>
+          )}
+          <div>
+            <label htmlFor="name">Nombre</label>
+            <Field type="text" name="name" id="name" required />
+            <ErrorMessage name="name" component="div" />
+          </div>
+          <div>
+            <label htmlFor="description">Descripción</label>
+            <Field type="text" name="description" id="description" required />
+            <ErrorMessage name="description" component="div" />
+          </div>
+          <div>
+            <label htmlFor="location">Ubicación</label>
+            <Field type="text" name="location" id="location" required />
+            <ErrorMessage name="location" component="div" />
+          </div>
+          <button type="submit" disabled={isSubmitting}>
+            Enviar
+          </button>
+        </Form>
+      )}
+    </Formik>
   );
 };
 
