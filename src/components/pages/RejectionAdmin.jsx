@@ -9,32 +9,34 @@ function RejectionAdmin() {
   if (error) return <div>Error: {error.message}</div>;
   console.log(data);
   return (
-   <div>
-   <h1>Rejection Admin</h1>
-   <Link to="/admin/rejection_causes/form">Create Rejection</Link>
-   <table>
-   <thead>
-   <tr>
-   <th>Name</th>
-   <th>Description</th>
-   <th>Actions</th>
-   </tr>
-   </thead>
-   <tbody>
-   {data.results.map((rejection_causes) => (
-   <tr key={rejection_causes.uuid} >
-   <td>{rejection_causes.name}</td>
-   <td>{rejection_causes.description}</td>
-    <td> 
-
-    <button onClick={() => Deleterejection_causes(rejection_causes)}>Delete</button>
-    </td>
-   </tr>
-   ))}
-   </tbody>
-   </table>
-   
-     </div>
-     );
+    <div>
+      <h1>Rejection Admin</h1>
+      <Link to="/admin/rejection_causes/form">Create Rejection</Link>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.results.map((rejection_causes) => (
+            <tr key={rejection_causes.uuid}>
+              <td>{rejection_causes.name}</td>
+              <td>{rejection_causes.description}</td>
+              <td>
+                <button
+                  onClick={() => Deleterejection_causes(rejection_causes)}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
    }
    export default RejectionAdmin;

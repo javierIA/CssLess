@@ -3,6 +3,7 @@
  import { useFetchClients,useFetchClientLocations} from "../../hooks/UseClients";
  import React, { useState } from "react";
  import {Field} from 'formik'
+ import { useFetchUsers } from "../../hooks/useUsers";
 
  export function DropRejection_Causes() {
    const { data, isLoading, error } = useFetchrejection_causes();  
@@ -95,3 +96,18 @@
  }
 
 export default DropClients;
+
+export function DropUsers() {
+  const { data, isLoading, error } = useFetchUsers();
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  return (
+    <Field id="users" name="users" as="select">
+      {data.results.map((option) => (
+        <option key={option.uuid} value={option.uuid}>
+          {option.name}
+        </option>
+      ))}
+    </Field>
+  );
+}

@@ -7,7 +7,6 @@ import UserAdmin from './components/pages/UserAdmin';
 import NavBar from './components/common/NavBar';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import UserForm from './components/pages/forms/UserForm';
-import { ReactQueryDevtools } from 'react-query-devtools'
 import ProductAdmin from './components/pages/ProductsAdmin';
 import ProductForm from './components/pages/forms/ProductForm';
 import TicketAdmin from "./components/pages/TicketsAdmin";
@@ -46,7 +45,6 @@ function App() {
         <Route path="/" element={<Home />} />
       </Routes>
     </QueryClientProvider>
-     <ReactQueryDevtools initialIsOpen={false} />
      </>
   );
 }

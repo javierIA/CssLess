@@ -43,11 +43,11 @@ const InspectedBoxForm = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
     >
       
       {({ values, errors, touched, isSubmitting }) => (
-        <Form>
+        <Form onSubmit={handleSubmit}>
            {status === "loading" && <p>Creando ...</p>}
       {status === "error" && <p>Error: {JSON.stringify(error.response.data  )}</p>}
           <Field name="lot_number" type="text" placeholder="Lot number" />
