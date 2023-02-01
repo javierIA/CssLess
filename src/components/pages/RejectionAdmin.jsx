@@ -21,7 +21,7 @@ function RejectionAdmin() {
           </tr>
         </thead>
         <tbody>
-          {data.results.map((rejection_causes) => (
+          {data.map((rejection_causes) => (
             <tr key={rejection_causes.uuid}>
               <td>{rejection_causes.name}</td>
               <td>{rejection_causes.description}</td>

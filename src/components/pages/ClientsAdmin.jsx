@@ -21,7 +21,7 @@ function ClientsAdmin() {
           </tr>
         </thead>
         <tbody>
-          {data.results.map((clients) => (
+          {data.map((clients) => (
             <tr key={clients.uuid}>
               <td>{clients.name}</td>
               <td>{clients.description}</td>

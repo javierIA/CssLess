@@ -22,7 +22,7 @@ function ProductAdmin() {
           </tr>
         </thead>
         <tbody>
-          {data.results.map((product) => (
+          {data.map((product) => (
             <tr key={product.uuid}>
               <td>{product.name}</td>
               <td>{product.part_number}</td>

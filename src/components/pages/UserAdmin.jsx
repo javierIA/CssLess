@@ -25,7 +25,7 @@ function UserAdmin() {
         </tr>
       </thead>
       <tbody>
-        {data.results.map((user) => (
+        {data.map((user) => (
           <tr key={user.uuid} > 
             <td>{user.username}</td>
             <td>{user.company_name}</td>

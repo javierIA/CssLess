@@ -11,7 +11,7 @@
    if (error) return <div>Error: {error.message}</div>;
   
    let options = [{name:"Ninguna",uuid:"Ninguna",description:"Ninguna"}]
-   options = options.concat(data.results)
+   options = options.concat(data)
    
    return (
      
@@ -33,7 +33,7 @@
    if (error) return <div>Error: {error.message}</div>;
    return (
      <Field id="products" name="products" as="select">
-       {data.results.map((option) => (
+       {data.map((option) => (
         
          <option key={option.uuid} value={option.uuid}>
            {option.name}
@@ -62,7 +62,7 @@
             onChange={changeClient}
             name="client" 
             id="client" as="select">  
-            {data.results.map((client) => (
+            {data.map((client) => (
               <option key={client.uuid} value={client.uuid}>
                 {client.name}
               </option>
@@ -86,7 +86,7 @@
        return (
         <label htmlFor="service_location">Locación</label>,
          <Field name="service_location" id="service_location" as="select">
-         {Object.values(data.data.results).map((location) => (  
+         {Object.values(data.data).map((location) => (  
            <option key={location.uuid} value={location.uuid}>
              {location.name}
            </option>
@@ -103,7 +103,7 @@ export function DropUsers() {
   if (error) return <div>Error: {error.message}</div>;
   return (
     <Field id="users" name="users" as="select">
-      {data.results.map((option) => (
+      {data.map((option) => (
         <option key={option.uuid} value={option.uuid}>
           {option.name}
         </option>
