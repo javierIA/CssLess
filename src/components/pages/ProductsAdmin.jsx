@@ -1,5 +1,7 @@
 import { useFetchProducts,useDeleteProduct } from "../../hooks/useProducts";
 import { Link } from "react-router-dom";
+import DataTable from 'react-data-table-component';
+
 
 function ProductAdmin() {
   const { data, isLoading, error } = useFetchProducts();
@@ -7,7 +9,42 @@ function ProductAdmin() {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-  console.log(data);
+  
+  const columns = [
+    {
+      name: "Nombre",
+      selector: (row) => (row.name),
+      sortable: true,
+      wrap: true,
+      wordWrap: 'wrap'
+    },
+    {
+      name: "Número de parte",
+      selector: (row) => (row.part_number),
+      sortable: true,
+      wrap: true,
+      wordWrap: 'wrap'
+    },
+    {
+      name: "Descripción",
+      selector: (row) => (row.description),
+      sortable: true,
+      wrap: true,
+      wordWrap: 'wrap'
+    },
+    {
+      name: 'Acciones',
+      cell: (row) => (
+        <>
+        <button onClick={() => DeleteProduct(row)}>Borrar</button>
+        <Link to={`/admin/products/form/${row.uuid}`}>
+          <button>Actualizar</button>
+        </Link>
+      </>
+      ),
+    }
+  ]
+
   return (
    <div>
    <h1>Product Admin</h1>
@@ -21,7 +58,7 @@ function ProductAdmin() {
    </tr>
    </thead>
    <tbody>
-   {data.results.map((product) => (
+   {data.map((product) => (
    <tr key={product.uuid} >
 
    <td>{product.name}</td>

@@ -1,7 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useCreateProduct, useFetchProducts,useFetchProduct, useUpdateProduct} from "../../../hooks/useProducts";
-import DropRejection_Causes from "../../common/DropRejection_Causes"
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 

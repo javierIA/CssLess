@@ -1,49 +1,77 @@
 import { useFetchUsers ,useDeleteUser, useUpdateUser } from "../../hooks/useUsers";
 import { Link } from "react-router-dom";
+import DataTable from 'react-data-table-component';
+
 
 function UserAdmin() {
   const { data, isLoading, error } = useFetchUsers();
   const {mutate:DeleteUser}= useDeleteUser();
-  const {mutate: UpdateUser}= useUpdateUser();
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-  console.log(data);
+
+  const columns = [
+    {
+      name: 'Nombre',
+      selector: (row) => row.username,
+      sortable: true,
+      wrap: true,
+      wordWrap: 'wrap'
+
+    },
+    {
+      name: 'Compañia',
+      selector: (row) => row.company_name,
+      sortable: true,
+      wrap: true,
+      wordWrap: 'wrap'
+      
+    },
+    {
+      name: 'Email',
+      selector: (row) => row.email,
+      sortable: true,
+      wrap: true,
+      wordWrap: 'wrap',
+    },
+    {
+      name: 'Fecha de nacimiento',
+      selector: (row) => row.date_birth,
+      sortable: true,
+      wrap: true,
+      wordWrap: 'wrap'
+    },
+    {
+      name: 'Alt Email',
+      selector: (row) => row.email_alt,
+      sortable: true,
+      wrap:true,
+      wordWrap: 'wrap'
+    },
+    {
+      name: 'Acciones',
+      cell: (row) => (
+        <>
+          <button onClick={() => DeleteUser(row)}>Borrar</button>
+          <Link to={`/admin/users/form/${row.uuid}`}>
+            <button>Actualizar</button>
+          </Link>
+        </>
+      ),
+    },
+  ];
+
   return (
     <div>
-    <h1>User Admin</h1> 
-    <Link to="/admin/users/form">Crear Usuario</Link>
-    <table>
-
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Compañia</th>
-          <th>Email</th>
-          <th>Fecha de nacimiento</th>
-          <th>Alt Email</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.results.map((user) => (
-          <tr key={user.uuid} > 
-            <td>{user.username}</td>
-            <td>{user.company_name}</td>
-            <td>{user.email}</td>
-            <td>{user.date_birth}</td>
-            <td>{user.email_alt}</td>
-            <td>
-              <button onClick={() => DeleteUser(user)}>Borrar usuario</button>
-              <Link to={`/admin/users/form/${user.uuid}`}>
-                <button>Actualizar</button>
-              </Link>
-            </td> 
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
+      <h1>User Admin</h1>
+      <Link to="/admin/users/form">Crear Usuario</Link>
+      <DataTable
+        title="Usuarios"
+        columns={columns}
+        data={data}
+        pagination
+      />
+    </div>
   );
 }
 

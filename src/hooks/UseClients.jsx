@@ -9,6 +9,7 @@ export const updateClients = (Clients) => Api.put(`/clients/${Clients.uuid}/`, C
 export const deleteClients = (Clients) => Api.delete(`/clients/${Clients.uuid}/`);
 export const getClient = (uuid) => Api.get(`clients/${uuid}/`);
 export const getClientLocations = (uuid) => Api.get(`clients/${uuid}/locations/`);
+
 export function useCreateClients() {
   const queryClient = useQueryClient();
   return useMutation({ mutationFn: createClients, onSuccess: () => queryClient.invalidateQueries("Clients") ,
@@ -33,6 +34,6 @@ export function useFetchClientLocations(uuid) {
 }
 
 export function useFetchClient(uuid) {
-  return useQuery(["Clients", uuid], () => getClients(uuid));
+  return useQuery(["Clients", uuid], () => getClient(uuid));
 }
 

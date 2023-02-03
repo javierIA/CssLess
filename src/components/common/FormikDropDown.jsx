@@ -10,7 +10,7 @@
    if (error) return <div>Error: {error.message}</div>;
   
    let options = [{name:"Ninguna",uuid:"Ninguna",description:"Ninguna"}]
-   options = options.concat(data.results)
+   options = options.concat(data)
    
    return (
      
@@ -61,7 +61,7 @@
             onChange={changeClient}
             name="client" 
             id="client" as="select">  
-            {data.results.map((client) => (
+            {data.map((client) => (
               <option key={client.uuid} value={client.uuid}>
                 {client.name}
               </option>
@@ -81,11 +81,10 @@
        if (error) return <div>Error: {error.message}</div>;
        if (!data) return <div>Error: no se obtuvo data</div>;
        if (data === undefined ) return <div>Seleccione un cliente para ver sus locaciones</div>;
-       console.trace(data.data.results)
        return (
         <label htmlFor="service_location">Locación</label>,
          <Field name="service_location" id="service_location" as="select">
-         {Object.values(data.data.results).map((location) => (  
+         {Object.values(data.data).map((location) => (  
            <option key={location.uuid} value={location.uuid}>
              {location.name}
            </option>

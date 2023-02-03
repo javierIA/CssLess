@@ -1,6 +1,8 @@
 import { useFecthTickets,useDeleteTicket} from "../../hooks/useTickets";
 import { Link } from "react-router-dom";
 import BoxAdmin from "./BoxAdmin";
+import DataTable from 'react-data-table-component';
+
 function TicketAdmin() {
 const { data, isLoading, error } = useFecthTickets();
 const {mutate: DeleteTicket} = useDeleteTicket();
@@ -33,7 +35,7 @@ return (
    </tr>
    </thead>
    <tbody>
-   {data.results.map((ticket) => (
+   {data.map((ticket) => (
    <tr key={ticket.uuid} >
    <td>{ticket.service_number}</td>
    <td>{ticket.quote_number}</td>

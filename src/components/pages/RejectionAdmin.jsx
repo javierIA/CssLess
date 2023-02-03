@@ -1,8 +1,10 @@
-import { useFetchRejection_causes,useDeleterejection_causes} from "../../hooks/useRejection_causes";
+import { useFetchrejection_causes,useDeleterejection_causes} from "../../hooks/useRejection_causes";
 import { Link } from "react-router-dom";
+import DataTable from 'react-data-table-component';
+
 
 function RejectionAdmin() {
-  const { data, isLoading, error } = useFetchRejection_causes();
+  const { data, isLoading, error } = useFetchrejection_causes();
   const { mutate: Deleterejection_causes } = useDeleterejection_causes();
 
   if (isLoading) return <div>Loading...</div>;
@@ -21,7 +23,7 @@ function RejectionAdmin() {
    </tr>
    </thead>
    <tbody>
-   {data.results.map((rejection_causes) => (
+   {data.map((rejection_causes) => (
    <tr key={rejection_causes.uuid} >
    <td>{rejection_causes.name}</td>
    <td>{rejection_causes.description}</td>

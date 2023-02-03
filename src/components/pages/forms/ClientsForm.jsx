@@ -1,5 +1,5 @@
 import React from "react";
-import { useCreateClient, useFetchClient, useUpdateClient } from "../../../hooks/UseClients";
+import { useCreateClients, useFetchClient, useUpdateClient } from "../../../hooks/UseClients";
 import { Formik, Form, Field } from 'formik';
 import { useParams}  from "react-router-dom";
 import * as Yup from "yup";
@@ -7,7 +7,7 @@ import * as Yup from "yup";
 
 
 export const ClientForm = () => {
- const { mutate: CreateClients ,status, error} = useCreateClient();
+ const { mutate: CreateClients ,status, error} = useCreateClients();
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);

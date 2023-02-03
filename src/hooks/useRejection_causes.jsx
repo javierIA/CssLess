@@ -24,7 +24,7 @@ export function useUpdaterejection_causes() {
   return useMutation({ mutationFn: updateRejection_causes, onSuccess: () => queryClient.invalidateQueries("rejection_causess") ,  
   onError: (error) => { console.log(error); } });
 }
-export function useFetchRejection_causes() {
+export function useFetchrejection_causes() {
   return useQuery("rejection_causes", fetchrejection_causes, ); 
   
 }

@@ -1,6 +1,8 @@
 import { useParams ,Link} from "react-router-dom";
 import { useFecthBoxes } from "../../hooks/useTickets";
 import React from "react";
+import DataTable from 'react-data-table-component';
+
 export default function BoxAdmin() {
   //
   const { uuid } = useParams();
